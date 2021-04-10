@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_1));
 			}
 				break;
 			case CUSBaccess::SWITCH_2:
@@ -112,7 +112,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_2, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_2));
 			}
 				break;
 			case CUSBaccess::SWITCH_3:
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_3, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_3));
 			}
 				break;
 			case CUSBaccess::SWITCH_4:
@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_4, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_4));
 			}
 				break;
 			case CUSBaccess::SWITCH_5:
@@ -151,7 +151,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_5, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_5));
 			}
 				break;
 			case CUSBaccess::SWITCH_6:
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_6, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_6));
 			}
 				break;
 			case CUSBaccess::SWITCH_7:
@@ -177,7 +177,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_7, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_7));
 			}
 				break;
 			case CUSBaccess::SWITCH_8:
@@ -190,7 +190,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_8, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_8));
 			}
 				break;
 			case CUSBaccess::SWITCH_9:
@@ -203,7 +203,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_9, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_9));
 			}
 				break;
 			case CUSBaccess::SWITCH_10:
@@ -216,7 +216,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_10, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_10));
 			}
 				break;
 			case CUSBaccess::SWITCH_11:
@@ -229,7 +229,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_11, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_11));
 			}
 				break;
 			case CUSBaccess::SWITCH_12:
@@ -242,7 +242,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_12, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_12));
 			}
 				break;
 			case CUSBaccess::SWITCH_13:
@@ -255,7 +255,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_13, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_13));
 			}
 				break;
 			case CUSBaccess::SWITCH_14:
@@ -268,7 +268,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_14, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_14));
 			}
 				break;
 			case CUSBaccess::SWITCH_15:
@@ -281,7 +281,7 @@ int main(int argc, char* argv[]) {
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_15, 1);
 				}
 				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_15));
 			}
 				break;
 			default:
