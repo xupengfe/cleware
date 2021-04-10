@@ -85,8 +85,13 @@ int main(int argc, char* argv[]) {
 					printf("Power on Cleware:0x%x\n", cle_id);
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
 				}
-				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+				printf("Cleware 0x%x switch status = %d\n",
+						cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_0));
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						cle_id, CWusb.GetSeqSwitch(cle_id, CUSBaccess::SWITCH_0, 0));
+				CWusb.GetSwitch(cle_id+1, CUSBaccess::SWITCH_1);
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						cle_id+1, CWusb.GetSeqSwitch(cle_id+1, CUSBaccess::SWITCH_1, 1));
 			}
 				break;
 			case CUSBaccess::SWITCH_1:
@@ -98,8 +103,13 @@ int main(int argc, char* argv[]) {
 					printf("Power on Cleware:0x%x\n", cle_id);
 					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 1);
 				}
-				printf("Cleware 0x%x switch status:%d\n",
-					cle_id, CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_1));
+				CWusb.GetSwitch(cle_id, CUSBaccess::SWITCH_1);
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						cle_id, CWusb.GetSeqSwitch(cle_id, CUSBaccess::SWITCH_1, 0));
+
+				CWusb.GetSwitch(cle_id-1, CUSBaccess::SWITCH_0);
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						cle_id-1, CWusb.GetSeqSwitch(cle_id-1, CUSBaccess::SWITCH_0, 0));
 			}
 				break;
 			case CUSBaccess::SWITCH_2:
@@ -299,8 +309,6 @@ int main(int argc, char* argv[]) {
 					CWusb.GetSerialNumber(devID));
 			if (devType == CUSBaccess::SWITCH1_DEVICE) {
 				printf("argv=%c <0x%02x>\n", argv[1][0], argv[1][0]);
-				printf("Cleware 0x%x switch status = %d\n",
-						devID, CWusb.GetSwitch(devID, CUSBaccess::SWITCH_0));
 				if (argv[1][0] == '0')
 					CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 0);
 				else if (argv[1][0] == '1')
@@ -309,6 +317,11 @@ int main(int argc, char* argv[]) {
 					printf("Invalid argv[1][0] for cleware:%c\n", argv[1][0]);
 					printf("./cleware 1 to power on, 0 to power off\n");
 				}
+				CWusb.GetSwitch(devID, CUSBaccess::SWITCH_0);
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						devID, CWusb.GetSeqSwitch(devID, CUSBaccess::SWITCH_0, 0));
+				printf("Cleware 0x%x seqswitch status = %d\n",
+						cle_id+1, CWusb.GetSeqSwitch(cle_id+1, CUSBaccess::SWITCH_1, 1));
 				break;
 			}
 			else
