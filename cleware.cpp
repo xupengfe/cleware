@@ -59,8 +59,7 @@ int check_status()
 
 int main(int argc, char* argv[]) {
 	CUSBaccess CWusb;
-	int cle_id = 0, devType, state = 0, devID = 0, USBcount = 0;
-	unsigned int switch_id;
+	int cle_id = 0, devType, devID = 0, USBcount = 0;
 
 	USBcount = CWusb.OpenCleware();
 	if (argc == 2) {
@@ -92,7 +91,7 @@ int main(int argc, char* argv[]) {
 	// power off/on specific cleware 0-0xf
 	if (argc == 3) {
 		USBcount = CWusb.OpenCleware();
-		switch_id = 0x10 + cle_id;
+
 		devType = CWusb.GetUSBType(cle_id);
 		printf("Device %d: Type=%d, Version=%d, SerNum=%d\n\n", cle_id,
 				devType, CWusb.GetVersion(cle_id),
@@ -100,12 +99,12 @@ int main(int argc, char* argv[]) {
 
 		if (argv[1][0] == '0') {
 			printf("-> Power off Cleware:0x%x\n", cle_id);
-			state = CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 0);
+			CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 0);
 			//usleep(30 * 1000);
 			//state =CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 0);
 		} else if (argv[1][0] == '1') {
 			printf("-> Power on Cleware:0x%x\n", cle_id);
-			state = CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
+			CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
 			//usleep(30 * 1000);
 			//state =CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
 		} else {
