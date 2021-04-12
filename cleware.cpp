@@ -122,11 +122,11 @@ int main(int argc, char* argv[]) {
 		if (devType == CUSBaccess::SWITCH1_DEVICE) {
 			printf("argv=%c <ASCII for this char: 0x%02x>\n",
 				argv[1][0], argv[1][0]);
-			if (argv[1][0] == '0')
+			if (argv[1][0] == '0') {
 				CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 0);
-			else if (argv[1][0] == '1')
+			} else if (argv[1][0] == '1') {
 				CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 1);
-			else {
+			} else {
 				printf("Invalid argv[1][0] for cleware:%c\n", argv[1][0]);
 				printf("./cleware 1 to power on, 0 to power off\n");
 			}
