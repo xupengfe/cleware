@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 			argc, argv[1][0], argv[2]);
 		sscanf(argv[2], "%x", &cle_id);
 		if ((cle_id < 0) || (cle_id >= USBcount)) {
-			printf("argv[2]:0x%x is not in cleware max range 0-0x%x present\n",
+			printf("argv[2]:0x%x is not in cleware max range 0~%d present\n",
 				cle_id, USBcount-1);
 			usage();
 		}
