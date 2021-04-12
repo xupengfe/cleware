@@ -59,10 +59,8 @@ int check_status()
 
 int main(int argc, char* argv[]) {
 	CUSBaccess CWusb;
-	int cnt = 0;
 	int cle_id = 0, devType, state = 0, devID = 0, USBcount = 0;
 	unsigned int switch_id;
-	enum CUSBaccess::SWITCH_IDs switchID = CUSBaccess::SWITCH_0;
 
 	USBcount = CWusb.OpenCleware();
 	if (argc == 2) {
@@ -99,7 +97,6 @@ int main(int argc, char* argv[]) {
 		printf("Device %d: Type=%d, Version=%d, SerNum=%d\n\n", cle_id,
 				devType, CWusb.GetVersion(cle_id),
 				CWusb.GetSerialNumber(cle_id));
-		switchID = (enum CUSBaccess::SWITCH_IDs)(switchID + cle_id);
 
 		if (argv[1][0] == '0') {
 			printf("-> Power off Cleware:0x%x\n", cle_id);
