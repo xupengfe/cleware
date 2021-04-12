@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
 			printf("Device %d: Type=%d, Version=%d, SerNum=%d\n", devID,
 				devType, CWusb.GetVersion(devID),
 				CWusb.GetSerialNumber(devID));
-		
+
 			if (devType == CUSBaccess::SWITCH1_DEVICE) {
 				if (argv[1][0] == '0') {
 					printf(" -> Power OFF cleware %x\n", devID);
