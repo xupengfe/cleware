@@ -39,131 +39,17 @@ int usage(void)
 int check_status()
 {
 	CUSBaccess CWusb;
-	int id = 0, idd = 0, USBcnt = 0;
+	int id = 0, USBcnt = 0;
+	enum CUSBaccess::SWITCH_IDs switchID = CUSBaccess::SWITCH_0;
 
 	USBcnt = CWusb.OpenCleware();;
 	for (id = 0; id < USBcnt; id++) {
-		idd = 0x10 + id;
-		switch (idd) {
-			case CUSBaccess::SWITCH_0:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_0);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_0, 0));
-				break;
-			}
-			case CUSBaccess::SWITCH_1:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_1);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_1, 0));
-				break;
-			}
-			case CUSBaccess::SWITCH_2:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_2);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_2, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_3:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_3);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_3, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_4:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_4);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_4, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_5:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_5);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_5, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_6:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_6);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_6, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_7:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_7);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_7, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_8:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_8);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_8, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_9:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_9);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_9, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_10:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_10);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_10, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_11:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_11);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_11, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_12:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_12);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_12, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_13:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_13);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_13, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_14:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_14);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_14, 0));
-			}
-				break;
-			case CUSBaccess::SWITCH_15:
-			{
-				CWusb.GetSwitch(id, CUSBaccess::SWITCH_15);
-				printf("Cleware 0x%x seqswitch status = %d\n",
-						id, CWusb.GetSeqSwitch(id, CUSBaccess::SWITCH_15, 0));
-			}
-				break;
-			default:
-			{
-				printf("id:%d In default\n", id);
-				break;
-			}
-		}
+		switchID = (enum CUSBaccess::SWITCH_IDs)(CUSBaccess::SWITCH_0 + id);
+		CWusb.GetSwitch(id, switchID);
+		printf("Cleware 0x%x seqswitch(power) status = %d\n",
+				id, CWusb.GetSeqSwitch(id, switchID, 0));
 	}
+
 	return 0;
 }
 
@@ -171,8 +57,9 @@ int check_status()
 int main(int argc, char* argv[]) {
 	CUSBaccess CWusb;
 	int cnt = 0;
-	int cle_id = 0, devType;
+	int cle_id = 0, devType, state = 0, devID = 0;
 	unsigned int switch_id;
+	enum CUSBaccess::SWITCH_IDs switchID = CUSBaccess::SWITCH_0;
 
 	int USBcount = CWusb.OpenCleware();
 	if (argc == 2) {
@@ -209,284 +96,46 @@ int main(int argc, char* argv[]) {
 		printf("Device %d: Type=%d, Version=%d, SerNum=%d\n", cle_id,
 				devType, CWusb.GetVersion(cle_id),
 				CWusb.GetSerialNumber(cle_id));
-		switch (switch_id) {
-			case CUSBaccess::SWITCH_0:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_1:
-			{
-				// UsagePageCWusb.StartDevice(cle_id);
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_1, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_2:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_2, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_2, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_2, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_2, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_3:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_3, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_3, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_3, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_3, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_4:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_4, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_4, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_4, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_4, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_5:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_5, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_5, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_5, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_5, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_6:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_6, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_6, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_6, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_6, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_7:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_7, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_7, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_7, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_7, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_8:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_8, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_8, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_8, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_8, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_9:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_9, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_9, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_9, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_9, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_10:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_10, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_10, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_10, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_10, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_11:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_11, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_11, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_11, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_11, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_12:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_12, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_12, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_12, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_12, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_13:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_13, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_13, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_13, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_13, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_14:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_14, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_14, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_14, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_14, 1);
-				}
-			}
-				break;
-			case CUSBaccess::SWITCH_15:
-			{
-				if (argv[1][0] == '0') {
-					printf("Power off Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_15, 0);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_15, 0);
-				} else if (argv[1][0] == '1') {
-					printf("Power on Cleware:0x%x\n", cle_id);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_15, 1);
-					CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_15, 1);
-				}
-			}
-				break;
-			default:
-				printf("In default\n");
-				break;
+		switchID = (enum CUSBaccess::SWITCH_IDs)(switchID + cle_id);
+
+		// power off/on cleware id 0-0xf
+		if (argv[1][0] == '0') {
+			printf("-> Power off Cleware:0x%x\n", cle_id);
+			state = CWusb.SetSwitch(cle_id, switchID, 0);
+			usleep(30 * 1000);
+			state =CWusb.SetSwitch(cle_id, switchID, 0);
+		} else if (argv[1][0] == '1') {
+			printf("-> Power on Cleware:0x%x\n", cle_id);
+			state = CWusb.SetSwitch(cle_id, switchID, 1);
+			usleep(30 * 1000);
+			state =CWusb.SetSwitch(cle_id, switchID, 1);
+		} else {
+			printf("Invalid argv[1][0]:%c not 0 or 1\n", argv[1][0]);
+			usage();
 		}
 	}
 
-	for (int devID=0; devID < USBcount; devID++) {
+	// power off/on only first cleware
+	if (argc == 2) {
 		devType = CWusb.GetUSBType(devID);
-
-		if (argc == 2) {
-			printf("Device %d: Type=%d, Version=%d, SerNum=%d\n", devID,
-					devType, CWusb.GetVersion(devID),
-					CWusb.GetSerialNumber(devID));
-			if (devType == CUSBaccess::SWITCH1_DEVICE) {
-				printf("argv=%c <ASCII for this char: 0x%02x>\n",
-					argv[1][0], argv[1][0]);
-				if (argv[1][0] == '0')
-					CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 0);
-				else if (argv[1][0] == '1')
-					CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 1);
-				else {
-					printf("Invalid argv[1][0] for cleware:%c\n", argv[1][0]);
-					printf("./cleware 1 to power on, 0 to power off\n");
-				}
-				break;
-			}
-			else
-				continue;		// die anderen Interessieren uns nicht
-		}
-
-
-		if (devType == CUSBaccess::TEMPERATURE_DEVICE || devType == CUSBaccess::TEMPERATURE2_DEVICE) {
-			CWusb.ResetDevice(devID);
-			usleep(300*1000);		// etwas warten
-
-			// nun 10 Messwerte abfrage
-			for (int cnt=0; cnt < 10; cnt++) {
-				double temperatur;
-				int	   zeit;
-				if (!CWusb.GetTemperature(devID, &temperatur, &zeit)) {
-					printf("GetTemperature(%d) fehlgeschlagen\n", devID);
-					break;
-				}
-				printf("Messwert %lf Grad Celsius, Zeit = %d\n", temperatur, zeit);
-				usleep(1200 * 1000);
-			}
-		}
-		if (devType == CUSBaccess::HUMIDITY1_DEVICE) {
-			CWusb.ResetDevice(devID);
-			usleep(100*1000);		// etwas warten
-
-			CWusb.StartDevice(devID);
-			usleep(300*1000);		// etwas warten
-			// nun 10 Messwerte abfrage
-			for (int cnt=0; cnt < 10; cnt++) {
-				double temperatur, humidity;
-				int	   zeit;
-				if (!CWusb.GetTemperature(devID, &temperatur, &zeit))
-					printf("GetTemperature(%d) fehlgeschlagen\n", devID);
-				else
-					printf("Messwert %lf Grad Celsius, Zeit = %d\n", temperatur, zeit);
-				if (!CWusb.GetHumidity(devID, &humidity, &zeit))
-					printf("GetHumidity(%d) fehlgeschlagen\n", devID);
-				else
-					printf("Messwert %lf %% RH, Zeit = %d\n", humidity, zeit);
-				usleep(1200 * 1000);
+		printf("Device %d: Type=%d, Version=%d, SerNum=%d\n", devID,
+				devType, CWusb.GetVersion(devID),
+				CWusb.GetSerialNumber(devID));
+		if (devType == CUSBaccess::SWITCH1_DEVICE) {
+			printf("argv=%c <ASCII for this char: 0x%02x>\n",
+				argv[1][0], argv[1][0]);
+			if (argv[1][0] == '0')
+				CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 0);
+			else if (argv[1][0] == '1')
+				CWusb.SetSwitch(devID, CUSBaccess::SWITCH_0, 1);
+			else {
+				printf("Invalid argv[1][0] for cleware:%c\n", argv[1][0]);
+				printf("./cleware 1 to power on, 0 to power off\n");
 			}
 		}
 	}
 
+	usleep(30 * 1000);
 	printf("***** After action, cleware ID status is as below *****\n");
 	check_status();
 
