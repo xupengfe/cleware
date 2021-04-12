@@ -79,6 +79,7 @@ CUSBaccess::GetVersion(int deviceNo) {
 int CUSBaccess::GetUSBType(int deviceNo) {
 	int devType = (USBtype_enum)cwGetUSBType(deviceNo);
 	int devVersion = cwGetVersion(deviceNo);
+
 	if (devType == CONTACT00_DEVICE && devVersion <= 12 && devVersion > 5) {
 		// this may be an early switch3/4 build on base of contact HW - adjust the ID
 		int switchCount = 0;
@@ -101,6 +102,7 @@ int CUSBaccess::GetUSBType(int deviceNo) {
 					}
 				}
 			}
+		printf("get type, switchCount:0x%x, devType:0x%x\n",switchCount, devType);
 		if (switchCount > 0 && switchCount <= 8)
 			devType = SWITCHX_DEVICE;
 		}

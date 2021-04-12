@@ -78,9 +78,7 @@ int main(int argc, char* argv[]) {
 	} else
 		usage();
 
-	if ((argv[1][0] == '0') || (argv[1][0] == '1')) {
-		printf("argv[1][0]:%c\n", argv[1][0]);
-	} else {
+	if ( !((argv[1][0] == '0') || (argv[1][0] == '1')) ) {
 		printf("argv[1][0] is not 0 or 1:%c\n", argv[1][0]);
 		usage();
 	}
