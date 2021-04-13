@@ -187,7 +187,7 @@ int CUSBaccess::SetSwitch(int deviceNo, enum SWITCH_IDs Switch, int On) {
 	if (devType == SWITCH1_DEVICE || devType == AUTORESET_DEVICE || devType == WATCHDOG_DEVICE) {
 		s[0] = 0;
 		s[1] = Switch;
-		if (version < 4)	
+		if (version < 4)
 			s[2] = !On;  // old version do not invert
 		else
 			s[2] = On;   // new version will use On directly
