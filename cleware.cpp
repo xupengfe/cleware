@@ -46,7 +46,8 @@ int check_status()
 
 	USBcnt = CWshow.OpenCleware();
 	for (id = 0; id < USBcnt; id++) {
-		switchID = (enum CUSBaccess::SWITCH_IDs)(CUSBaccess::SWITCH_0 + id);
+		//switchID = (enum CUSBaccess::SWITCH_IDs)(CUSBaccess::SWITCH_0 + id);
+		switchID = (enum CUSBaccess::SWITCH_IDs)CUSBaccess::SWITCH_0;
 		CWshow.GetSwitch(id, switchID);
 		printf("Cleware %x power status = %d\n",
 				id, CWshow.GetSeqSwitch(id, switchID, 0));
