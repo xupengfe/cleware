@@ -49,6 +49,12 @@ int check_status()
 		//switchID = (enum CUSBaccess::SWITCH_IDs)(CUSBaccess::SWITCH_0 + id);
 		switchID = (enum CUSBaccess::SWITCH_IDs)CUSBaccess::SWITCH_0;
 		CWshow.GetSwitch(id, switchID);
+		//cleware 5 or more get wrong status in 10 pecentage, work around way
+		if (id >= 5) {
+			usleep(50 * 1000);
+			CWshow.GetSeqSwitch(id, switchID, 0);
+			CWshow.GetSwitch(id, switchID);
+		}
 		printf("Cleware %x power status = %d\n",
 				id, CWshow.GetSeqSwitch(id, switchID, 0));
 	}
@@ -106,7 +112,7 @@ int main(int argc, char* argv[]) {
 		} else if (argv[1][0] == '1') {
 			printf("-> Power on Cleware:0x%x\n", cle_id);
 			CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
-			//usleep(30 * 1000);
+			usleep(30 * 1000);
 			//state =CWusb.SetSwitch(cle_id, CUSBaccess::SWITCH_0, 1);
 		} else {
 			printf("Invalid argv[1][0]:%c not 0 or 1\n", argv[1][0]);
@@ -139,7 +145,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	usleep(30 * 1000);
+	usleep(50 * 1000);
 	printf("\n***** After action, cleware ID status is as below *****\n");
 	check_status();
 
