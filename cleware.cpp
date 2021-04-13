@@ -30,8 +30,8 @@
 int usage(void)
 {
 	CUSBaccess CWusb;
-	printf("Usage: [0|1] [X]\n");
-	printf("Par1:  0 means power off, 1 means power on\n");
+	printf("Usage: [0|1|s] [X]\n");
+	printf("Par1:  0 means power off all; 1 means power on all; s means show all status\n");
 	printf("Par2:  0 means 1(1st) connected cleware in hex(max f for cleware 16)\n");
 	CWusb.CloseCleware();
 
@@ -73,6 +73,10 @@ int main(int argc, char* argv[]) {
 		printf("Cleware argc=%d,argv[1][0]=%c\n", argc, argv[1][0]);
 		if (argv[1][0] == 'h' || argv[1][1] == 'h')
 			usage();
+		if (argv[1][0] == 's') {
+			check_status();
+			return 0;
+		}
 	} else if (argc == 3) {
 		printf("Cleware argc=%d,argv[1][0]=%c, argv[2]:%s\n",
 			argc, argv[1][0], argv[2]);
