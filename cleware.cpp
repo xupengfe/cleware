@@ -113,7 +113,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 
-	// power off/on only first cleware
+	// power off/on all found cleware
 	if (argc == 2) {
 		USBcount = CWusb.OpenCleware();
 
