@@ -31,7 +31,9 @@ int usage(void)
 {
 	CUSBaccess CWusb;
 	printf("Usage: [0|1|s] [X]\n");
-	printf("Par1:  0 means power off all; 1 means power on all; s means show all status\n");
+	printf("Par1:  0 means power off(only 1 parm will power off all;\n");
+	printf("       1 means power on (only 1 parm will power on all;\n");
+	printf("       s means show all status\n");
 	printf("Par2:  0 means 1(1st) connected cleware in hex(max f for cleware 16)\n");
 	CWusb.CloseCleware();
 
