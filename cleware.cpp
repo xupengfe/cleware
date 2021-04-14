@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 		if ((cle_id < 0) || (cle_id >= USBcount)) {
 			printf("argv[2]:0x%x is not in Cleware max range 0~%d present\n",
 				cle_id, USBcount-1);
-			usage();
+			return 2;
 		}
 	} else
 		usage();
